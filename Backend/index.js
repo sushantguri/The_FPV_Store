@@ -12,7 +12,7 @@ const prisma = require('./prismaClient.js');
 const PORT = process.env.PORT || 5001;
 
 
-app.use(cors());
+app.use(cors({ origin: true }));
 app.use(express.json());
 
 const authRoutes = require('./routes/authRoutes.js');
