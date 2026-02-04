@@ -120,7 +120,8 @@ h6 {
 }
 
 .checkout-step-active {
-    @apply bg-gradient-to-tr from-[#00e5ff] to-[#7000ff] text-black shadow-[0_0_15px_rgba(0, 229, 255, 0.4)];
+    @apply bg-gradient-to-tr from-[#00e5ff] to-[#7000ff] text-black;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
 }
 
 ::-webkit-scrollbar {

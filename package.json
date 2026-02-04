@@ -1,1 +1,15 @@
-{}
+{
+    "name": "fpv-haven-root",
+    "version": "1.0.0",
+    "description": "Root package for FPV Haven",
+    "main": "index.js",
+    "scripts": {
+        "install-all": "npm install && cd Backend && npm install && cd ../Frontend && npm install",
+        "server": "cd Backend && npm run server",
+        "client": "cd Frontend && npm run dev",
+        "dev": "npx concurrently \"npm run server\" \"npm run client\""
+    },
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    }
+}

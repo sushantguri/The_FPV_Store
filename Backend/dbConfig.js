@@ -8,7 +8,10 @@ if (process.env.DATABASE_URL) {
         uri: process.env.DATABASE_URL,
         waitForConnections: true,
         connectionLimit: 10,
-        queueLimit: 0
+        queueLimit: 0,
+        ssl: {
+            rejectUnauthorized: false
+        }
     });
 } else {
     pool = mysql.createPool({
