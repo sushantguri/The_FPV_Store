@@ -12,8 +12,8 @@ API.interceptors.request.use((req) => {
 export const signIn = (formData) => API.post('/auth/login', formData);
 export const signUp = (formData) => API.post('/auth/register', formData);
 
-export const fetchProducts = (page, search, category, minPrice, maxPrice, sort) =>
-    API.get('/products', { params: { page, search, category, minPrice, maxPrice, sort } });
+export const fetchProducts = (page, search, category, minPrice, maxPrice, sort, limit) =>
+    API.get('/products', { params: { page, search, category, minPrice, maxPrice, sort, limit } });
 export const fetchProduct = (id) => API.get(`/products/${id}`);
 export const createProduct = (newProduct) => API.post('/products', newProduct);
 export const updateProduct = (id, updatedProduct) => API.patch(`/products/${id}`, updatedProduct);

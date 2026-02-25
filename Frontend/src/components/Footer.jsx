@@ -33,6 +33,7 @@ const Footer = () => {
                     <div>
                         <h3 className="text-[10px] font-black tracking-[0.3em] text-[#00a3ff] uppercase mb-8">Navigation</h3>
                         <ul className="space-y-4">
+                            <FooterLink to="/about" label="About Us" />
                             <FooterLink to="/shop" label="Flight Catalog" />
                             <FooterLink to="/tutorials" label="Pilot Academy" />
                             <FooterLink to="/customer-service" label="Mission Support" />

@@ -5,12 +5,12 @@ const createOrder = async (req, res) => {
     try {
         const items = req.body.items;
         const total = req.body.total;
-        const address = req.body.address;
-        const city = req.body.city;
-        const zipCode = req.body.zipCode;
-        const country = req.body.country;
+        const address = req.body.address || null;
+        const city = req.body.city || null;
+        const zipCode = req.body.zipCode || null;
+        const country = req.body.country || null;
         const paymentMethod = req.body.paymentMethod || 'QR_PAY';
-        const transactionId = req.body.transactionId;
+        const transactionId = req.body.transactionId || null;
 
         const userId = req.user.id;
 
@@ -27,6 +27,12 @@ const createOrder = async (req, res) => {
             await connection.execute(
                 'INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)',
                 [orderId, item.id, item.quantity, item.price]
+            );
+
+            // Reduce the stock of the purchased product, ensuring it doesn't drop below 0
+            await connection.execute(
+                'UPDATE products SET stock = GREATEST(0, stock - ?) WHERE id = ?',
+                [item.quantity, item.id]
             );
         }
 

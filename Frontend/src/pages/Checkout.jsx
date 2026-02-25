@@ -19,6 +19,7 @@ const Checkout = () => {
     }, [user, navigate]);
 
     const [formData, setFormData] = useState({
+        name: '',
         address: '',
         city: '',
         zipCode: '',
@@ -33,8 +34,8 @@ const Checkout = () => {
     };
 
     const nextStep = () => {
-        if (!formData.address || !formData.city || !formData.zipCode || !formData.country) {
-            alert('Please complete all delivery coordinates before proceeding.');
+        if (!formData.name || !formData.address || !formData.city || !formData.zipCode || !formData.country) {
+            alert('Please complete all delivery details before proceeding.');
             return;
         }
         setCurrentStep(2);
@@ -125,49 +126,63 @@ const Checkout = () => {
                                         </div>
 
                                         <div className="space-y-8">
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div className="space-y-3">
+                                                    <label className="text-[9px] uppercase font-black tracking-[0.3em] text-gray-400 ml-1">Full Name</label>
+                                                    <input
+                                                        type="text"
+                                                        name="name"
+                                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-[#00e5ff]/50 transition-all font-bold placeholder:text-gray-800 placeholder:italic"
+                                                        placeholder="John Doe"
+                                                        value={formData.name}
+                                                        onChange={handleChange}
+                                                    />
+                                                </div>
+                                                <div className="space-y-3">
+                                                    <label className="text-[9px] uppercase font-black tracking-[0.3em] text-gray-400 ml-1">Phone Number</label>
+                                                    <input
+                                                        type="text"
+                                                        name="country" /* Note: Assuming we map 'country' to phone for simplicity, or we should use it for State */
+                                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-[#00e5ff]/50 transition-all font-bold placeholder:text-gray-800 placeholder:italic"
+                                                        placeholder="+1 234 567 8900"
+                                                        value={formData.country}
+                                                        onChange={handleChange}
+                                                    />
+                                                </div>
+                                            </div>
+
                                             <div className="space-y-3">
-                                                <label className="text-[9px] uppercase font-black tracking-[0.3em] text-gray-400 ml-1">Tactical Address</label>
+                                                <label className="text-[9px] uppercase font-black tracking-[0.3em] text-gray-400 ml-1">Complete Address</label>
                                                 <input
                                                     type="text"
                                                     name="address"
                                                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-[#00e5ff]/50 transition-all font-bold placeholder:text-gray-800 placeholder:italic"
-                                                    placeholder="Unit 12, Neon Tower, Sector 7"
+                                                    placeholder="123 Main Street, Apt 4B"
                                                     value={formData.address}
                                                     onChange={handleChange}
                                                 />
                                             </div>
 
-                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                 <div className="space-y-3">
-                                                    <label className="text-[9px] uppercase font-black tracking-[0.3em] text-gray-400 ml-1">Metropolis</label>
+                                                    <label className="text-[9px] uppercase font-black tracking-[0.3em] text-gray-400 ml-1">City</label>
                                                     <input
                                                         type="text"
                                                         name="city"
                                                         className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-white/20 transition-all font-bold"
-                                                        placeholder="New Zenith"
+                                                        placeholder="New York"
                                                         value={formData.city}
                                                         onChange={handleChange}
                                                     />
                                                 </div>
                                                 <div className="space-y-3">
-                                                    <label className="text-[9px] uppercase font-black tracking-[0.3em] text-gray-400 ml-1">Post-Code</label>
+                                                    <label className="text-[9px] uppercase font-black tracking-[0.3em] text-gray-400 ml-1">Zip Code</label>
                                                     <input
                                                         type="text"
                                                         name="zipCode"
                                                         className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-white/20 transition-all font-bold"
-                                                        placeholder="7702-X"
+                                                        placeholder="10001"
                                                         value={formData.zipCode}
-                                                        onChange={handleChange}
-                                                    />
-                                                </div>
-                                                <div className="space-y-3">
-                                                    <label className="text-[9px] uppercase font-black tracking-[0.3em] text-gray-400 ml-1">Federation</label>
-                                                    <input
-                                                        type="text"
-                                                        name="country"
-                                                        className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-white focus:outline-none focus:border-white/20 transition-all font-bold"
-                                                        placeholder="Cyberia"
-                                                        value={formData.country}
                                                         onChange={handleChange}
                                                     />
                                                 </div>
@@ -202,20 +217,13 @@ const Checkout = () => {
                                             <button onClick={() => setCurrentStep(1)} className="text-[9px] font-black text-[#00e5ff] uppercase tracking-widest hover:underline">Edit Logistics</button>
                                         </div>
 
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                                        <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 mb-10 text-center">
                                             <PaymentMethod
                                                 id="QR_PAY"
                                                 label="Scan & Pay (UPI)"
                                                 icon={<QrCode />}
                                                 active={paymentMethod === 'QR_PAY'}
                                                 onClick={() => setPaymentMethod('QR_PAY')}
-                                            />
-                                            <PaymentMethod
-                                                id="CASH_ON_DELIVERY"
-                                                label="Cash on Delivery"
-                                                icon={<MapPin />}
-                                                active={paymentMethod === 'CASH_ON_DELIVERY'}
-                                                onClick={() => setPaymentMethod('CASH_ON_DELIVERY')}
                                             />
                                         </div>
 

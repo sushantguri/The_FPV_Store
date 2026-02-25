@@ -2,9 +2,9 @@ const pool = require('../dbConfig');
 
 const submitContactForm = async (req, res) => {
     try {
-        const name = req.body.name;
-        const email = req.body.email;
-        const message = req.body.message;
+        const name = req.body.name || null;
+        const email = req.body.email || null;
+        const message = req.body.message || null;
 
         const [result] = await pool.execute(
             'INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)',

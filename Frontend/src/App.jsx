@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -23,9 +24,10 @@ import Orders from './pages/Orders';
 import CreateProduct from './pages/admin/CreateProduct';
 import CreateTutorial from './pages/admin/CreateTutorial';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import About from './pages/About';
 
 
-import { useLocation } from 'react-router-dom';
+
 
 const Layout = () => {
   const location = useLocation();
@@ -40,24 +42,36 @@ const Layout = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#0a0a0c]">
       <Navbar />
-      <main className="flex-grow pt-20 flex flex-col">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/tutorials" element={<Tutorials />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/order-success" element={<OrderSuccess />} />
-          <Route path="/customer-service" element={<CustomerService />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/create-product" element={<CreateProduct />} />
-          <Route path="/admin/create-tutorial" element={<CreateTutorial />} />
-        </Routes>
+      <main className="flex-grow pt-20 flex flex-col relative overflow-x-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="flex-grow flex flex-col"
+          >
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Home />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/tutorials" element={<Tutorials />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/order-success" element={<OrderSuccess />} />
+              <Route path="/customer-service" element={<CustomerService />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/create-product" element={<CreateProduct />} />
+              <Route path="/admin/create-tutorial" element={<CreateTutorial />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </motion.div>
+        </AnimatePresence>
       </main>
       <Toaster
         position="bottom-right"

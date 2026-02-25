@@ -37,11 +37,11 @@ const Register = () => {
                 {/* Header */}
                 <div className="text-center mb-10">
                     <Link to="/" className="inline-flex items-center gap-3 group mb-6">
-                        <div className="bg-gradient-to-tr from-[#00e5ff] to-[#7000ff] p-3 rounded-2xl group-hover:rotate-12 transition-transform duration-500 shadow-[0_0_20px_rgba(0,229,255,0.3)]">
-                            <Ghost className="w-8 h-8 text-white" />
+                        <div className="w-16 h-16 rounded-2xl overflow-hidden group-hover:rotate-12 transition-transform duration-500 shadow-[0_0_20px_rgba(0,229,255,0.3)] border border-white/10">
+                            <img src="/logo.png" alt="Quad Hub Logo" className="w-full h-full object-cover" />
                         </div>
                     </Link>
-                    <h1 className="text-4xl font-black text-white tracking-tighter mb-2">JOIN THE <span className="text-gradient">HAVEN</span></h1>
+                    <h1 className="text-4xl font-black text-white tracking-tighter mb-2">JOIN THE <span className="text-gradient">QUAD HUB</span></h1>
                     <p className="text-gray-500 text-sm font-medium tracking-wide uppercase">Register your pilot flight profile</p>
                 </div>
 
@@ -74,7 +74,7 @@ const Register = () => {
                                     type="email"
                                     required
                                     className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-6 py-3.5 text-white focus:outline-none focus:border-[#7000ff]/50 transition-all placeholder:text-gray-700 font-medium text-sm"
-                                    placeholder="pilot@haven.com"
+                                    placeholder="pilot@quadhub.com"
                                     onChange={handleChange}
                                 />
                             </div>
