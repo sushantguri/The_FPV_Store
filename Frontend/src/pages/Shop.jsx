@@ -12,7 +12,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const categories = [
     { id: '', label: 'ALL SYSTEMS', icon: <LayoutGrid className="w-4 h-4" /> },
-    { id: 'dji-drones', label: 'DJI DRONES', icon: <Crosshair className="w-4 h-4" /> },
     { id: 'motors', label: 'MOTORS', icon: <Zap className="w-4 h-4" /> },
     { id: 'frames', label: 'FRAMES', icon: <Box className="w-4 h-4" /> },
     { id: 'electronics', label: 'ELECTRONICS', icon: <Cpu className="w-4 h-4" /> },

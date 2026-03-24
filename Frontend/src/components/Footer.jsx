@@ -20,13 +20,20 @@ const Footer = () => {
                                 QUAD HUB
                             </span>
                         </Link>
-                        <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-xs">
+                        <p className="text-gray-500 text-sm leading-relaxed mb-6 max-w-xs">
                             The definitive source for high-performance FPV components and pilot training. Engineered for the next generation of flight.
                         </p>
+                        <div className="mb-6 border-l-2 border-[#00a3ff]/50 pl-4 py-1">
+                            <h4 className="text-[9px] font-black tracking-[0.3em] text-[#00a3ff] uppercase mb-1">Headquarters</h4>
+                            <p className="text-gray-400 text-xs uppercase tracking-widest max-w-[280px] font-bold leading-relaxed">
+                                SCF 49 Kahnuwan Road <br/>
+                                1st Floor, Opp. Police Chownki
+                            </p>
+                        </div>
                         <div className="flex items-center gap-4">
-                            <SocialLink icon={<Instagram className="w-4 h-4" />} />
-                            <SocialLink icon={<Twitter className="w-4 h-4" />} />
-                            <SocialLink icon={<Youtube className="w-4 h-4" />} />
+                            <SocialLink href="https://www.instagram.com/quadhub_india?igsh=c2o2NWxra2wxNXdm" icon={<Instagram className="w-4 h-4" />} />
+                            <SocialLink href="#" icon={<Twitter className="w-4 h-4" />} />
+                            <SocialLink href="https://youtube.com/@quadhubindia?si=AxF8D4w_FCBQYMjH" icon={<Youtube className="w-4 h-4" />} />
                         </div>
                     </div>
 
@@ -81,8 +88,8 @@ const FooterLink = ({ to, label }) => (
     </li>
 );
 
-const SocialLink = ({ icon }) => (
-    <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 hover:text-white hover:border-[#00a3ff]/50 hover:bg-[#00a3ff]/10 transition-all">
+const SocialLink = ({ icon, href }) => (
+    <a href={href || "#"} target={href && href !== "#" ? "_blank" : "_self"} rel={href && href !== "#" ? "noopener noreferrer" : undefined} className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 hover:text-white hover:border-[#00a3ff]/50 hover:bg-[#00a3ff]/10 transition-all">
         {icon}
     </a>
 );

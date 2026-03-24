@@ -216,7 +216,6 @@ const Navbar = () => {
 
                             <div className="flex flex-col gap-1">
                                 {[
-                                    { id: 'dji-drones', label: 'DJI DRONES' },
                                     { id: 'motors', label: 'MOTORS' },
                                     { id: 'frames', label: 'FRAMES' },
                                     { id: 'electronics', label: 'ELECTRONICS' },

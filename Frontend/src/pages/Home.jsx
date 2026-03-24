@@ -14,7 +14,6 @@ const Home = () => {
     ];
 
     const shopCategories = [
-        { id: 'dji-drones', label: 'DJI DRONES', icon: <Crosshair className="w-5 h-5 md:w-6 md:h-6" /> },
         { id: 'motors', label: 'MOTORS', icon: <Zap className="w-5 h-5 md:w-6 md:h-6" /> },
         { id: 'frames', label: 'FRAMES', icon: <Box className="w-5 h-5 md:w-6 md:h-6" /> },
         { id: 'electronics', label: 'ELECTRONICS', icon: <Cpu className="w-5 h-5 md:w-6 md:h-6" /> },
